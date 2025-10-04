@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <style>
+    body { font-family: Arial; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f5f5f5; }
+    .quiz-container {
+      background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); width: 400px;
+    }
+    h2 { margin-bottom: 15px; }
+    .btn { display: block; width: 100%; margin: 10px 0; padding: 10px; border: none; border-radius: 5px; background: #2196f3; color: white; cursor: pointer; font-size: 16px; }
+    .btn:hover { background: #1976d2; }
+    #next-btn { display: none; background: #4caf50; }
+    .correct { background: #4caf50 !important; }
+    .wrong { background: #f44336 !important; }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h2 id="question">Question goes here</h2>
+    <div id="answer-buttons"></div>
+    <button id="next-btn" class="btn">Next</button>
+  </div>
+
+  <script>
+    const questions = [
+      { question: "Which language runs in a web browser?", answers: [
+        { text: "Python", correct: false },
+        { text: "JavaScript", correct: true },
+        { text: "C++", correct: false },
+        { text: "Java", correct: false }
+      ]},
+      { question: "What does CSS stand for?", answers: [
+        { text: "Cascading Style Sheets", correct: true },
+        { text: "Computer Style System", correct: false },
+        { text: "Creative Sheet Style", correct: false },
+        { text: "Colorful Style System", correct: false }
+      ]},
+      { question: "Which tag is used for images?", answers: [
+        { text: "<image>", correct: false },
+        { text: "<img>", correct: true },
+        { text: "<src>", correct: false },
+        { text: "<pic>", correct: false }
+      ]}
+    ];
+
+    const questionElement = document.getElementById("question");
+    const answerButtons = document.getElementById("answer-buttons");
+    const nextButton = document.getElementById("next-btn");
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function startQuiz() {
+      currentQuestionIndex = 0;
+      score = 0;
+      nextButton.innerHTML = "Next";
+      showQuestion();
+    }
+
+    function showQuestion() {
+      resetState();
+      let currentQuestion = questions[currentQuestionIndex];
+      questionElement.innerHTML = currentQuestion.question;
+      currentQuestion.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.innerHTML = answer.text;
+        button.classList.add("btn");
+        button.dataset.correct = answer.correct;
+        button.addEventListener("click", selectAnswer);
+        answerButtons.appendChild(button);
+      });
+    }
+
+    function resetState() {
+      nextButton.style.display = "none";
+      while (answerButtons.firstChild) {
+        answerButtons.removeChild(answerButtons.firstChild);
+      }
+    }
+
+    function selectAnswer(e) {
+      const selectedBtn = e.target;
+      const isCorrect = selectedBtn.dataset.correct === "true";
+      if (isCorrect) {
+        selectedBtn.classList.add("correct");
+        score++;
+      } else {
+        selectedBtn.classList.add("wrong");
+      }
+      Array.from(answerButtons.children).forEach(button => {
+        if (button.dataset.correct === "true") {
+          button.classList.add("correct");
+        }
+        button.disabled = true;
+      });
+      nextButton.style.display = "block";
+    }
+
+    function showScore() {
+      resetState();
+      questionElement.innerHTML = `You scored ${score} out of ${questions.length}! 🎉`;
+      nextButton.innerHTML = "Play Again";
+      nextButton.style.display = "block";
+    }
+
+    function handleNextButton() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        showQuestion();
+      } else {
+        showScore();
+      }
+    }
+
+    nextButton.addEventListener("click", () => {
+      if (currentQuestionIndex < questions.length) {
+        handleNextButton();
+      } else {
+        startQuiz();
+      }
+    });
+
+    startQuiz();
+  </script>
+</body>
+</html>
