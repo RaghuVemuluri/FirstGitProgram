@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallax Landing Page</title>
+  <style>
+    body, html {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .parallax {
+      background-image: url('https://images.unsplash.com/photo-1522199710521-72d69614c702');
+      height: 100vh;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .section {
+      padding: 100px;
+      text-align: center;
+      background: #111;
+      color: #fff;
+    }
+    h1 {
+      font-size: 3rem;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="parallax"></div>
+
+  <div class="section">
+    <h1>Welcome to My World</h1>
+    <p>Scroll to experience the parallax effect and modern layout design using pure HTML & CSS.</p>
+  </div>
+
+  <div class="parallax"></div>
+
+  <div class="section">
+    <h1>Build Something Beautiful</h1>
+    <p>Using just HTML and CSS, you can make visually appealing websites like this one!</p>
+  </div>
+</body>
+</html>

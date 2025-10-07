@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Showcase</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 40px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #00ffcc;
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      color: #d1d1d1;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #00e6b8;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Modern Tech Store</h1>
+    <p>Explore our trending products with smooth design and animations</p>
+  </header>
+
+  <section class="products">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd" alt="Headphones">
+      <div class="card-content">
+        <h3>Wireless Headphones</h3>
+        <p>High-quality sound and noise cancellation with 20hr battery life.</p>
+        <div class="price">₹4,999</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1585386959984-a4155229f2c3" alt="Smartwatch">
+      <div class="card-content">
+        <h3>Smartwatch Pro</h3>
+        <p>Track your fitness, monitor heart rate, and stay connected.</p>
+        <div class="price">₹6,499</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" alt="Laptop">
+      <div class="card-content">
+        <h3>UltraBook X1</h3>
+        <p>Lightweight laptop with 16GB RAM and 512GB SSD for performance.</p>
+        <div class="price">₹89,999</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1606813908982-3f5b9a7db53f" alt="Camera">
+      <div class="card-content">
+        <h3>4K Action Camera</h3>
+        <p>Capture every adventure with ultra-HD clarity and waterproof design.</p>
+        <div class="price">₹12,999</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Modern Tech Store | Designed by Raghu Vemuluri
+  </footer>
+
+</body>
+</html>
